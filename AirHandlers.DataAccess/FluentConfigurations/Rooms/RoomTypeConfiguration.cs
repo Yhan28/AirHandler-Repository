@@ -10,7 +10,7 @@ namespace AirHandlers.DataAccess.FluentConfigurations.Rooms
         public override void Configure(EntityTypeBuilder<Room> builder)
         {
             builder.ToTable("Rooms");
-            builder.HasKey(r => r.ID);
+            builder.HasKey(r => r.Id); // Cambiado de "ID" a "Id"
             builder.Property(r => r.Number).IsRequired();
             builder.Property(r => r.Volume).IsRequired();
 

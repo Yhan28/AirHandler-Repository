@@ -5,12 +5,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace AirHandlers.DataAccess.FluentConfigurations.AirHandlers
 {
-    public class AirHandlerTypeConfiguration : EntityTypeConfigurationBase<AirHandler>
+    public class AirHandlerTypeConfiguration : EntityTypeConfigurationBase<AirHandlerEntity>
     {
-        public override void Configure(EntityTypeBuilder<AirHandler> builder)
+        public override void Configure(EntityTypeBuilder<AirHandlerEntity> builder)
         {
             builder.ToTable("AirHandlers");
-            builder.HasKey(a => a.ID);
+            builder.HasKey(a => a.Id); // Cambie de "ID" a "Id" pq elimine la propiedad ID en las clases base
             builder.Property(a => a.IdentifierCode).IsRequired().HasMaxLength(50);
             builder.Property(a => a.IsOperating).IsRequired();
             builder.Property(a => a.FilterChangeDate).IsRequired();

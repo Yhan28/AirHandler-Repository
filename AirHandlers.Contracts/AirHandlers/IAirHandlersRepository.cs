@@ -13,7 +13,7 @@ namespace AirHandlers.Contracts.AirHandlers
         /// Crea un nuevo AirHandler en la base de datos.
         /// </summary>
         /// <param name="airHandler">The AirHandler object to be created.</param>
-        void AddAirHandler(AirHandler airHandler);
+        void AddAirHandler(AirHandlerEntity airHandler);
 
 
         /// <summary>
@@ -21,21 +21,21 @@ namespace AirHandlers.Contracts.AirHandlers
         /// </summary>
         /// <param name="id">The ID of the AirHandler to retrieve.</param>
         /// <returns>The AirHandler object if found; otherwise, null.</returns>
-        T? GetAirHandlerById<T>(Guid id) where T : AirHandler;
+        T? GetAirHandlerById<T>(Guid id) where T : AirHandlerEntity;
 
 
         /// <summary>
         /// Recibe todos los AirHandlers de la base de datos.
         /// </summary>
         /// <returns>A collection of all AirHandlers.</returns>
-        public IEnumerable<T> GetAllAirHandler<T>() where T:AirHandler;
+        public IEnumerable<T> GetAllAirHandler<T>() where T:AirHandlerEntity;
 
 
         /// <summary>
         /// Actualiza un AirHandler en la base de datos.
         /// </summary>
         /// <param name="airHandler">The AirHandler object with updated values.</param>
-        void UpdateAirHandler(AirHandler airHandler);
+        void UpdateAirHandler(AirHandlerEntity airHandler);
 
 
         /// <summary>

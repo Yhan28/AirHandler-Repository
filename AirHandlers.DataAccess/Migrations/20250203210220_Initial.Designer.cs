@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AirHandlers.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250203045609_Initial")]
+    [Migration("20250203210220_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -19,16 +19,13 @@ namespace AirHandlers.DataAccess.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.36");
 
-            modelBuilder.Entity("AirHandlers.Domain.Entities.AirHandler", b =>
+            modelBuilder.Entity("AirHandlers.Domain.Entities.AirHandlerEntity", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("FilterChangeDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("Id")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("IdentifierCode")
@@ -45,21 +42,18 @@ namespace AirHandlers.DataAccess.Migrations
                     b.Property<double>("ReferenceTemperature")
                         .HasColumnType("REAL");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("AirHandlers", (string)null);
                 });
 
             modelBuilder.Entity("AirHandlers.Domain.Entities.Recipe", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("EndDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("Id")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
@@ -76,21 +70,18 @@ namespace AirHandlers.DataAccess.Migrations
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("Recipes", (string)null);
                 });
 
             modelBuilder.Entity("AirHandlers.Domain.Entities.Room", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
                     b.Property<Guid>("AssociatedHandlerId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("Id")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Number")
@@ -99,7 +90,7 @@ namespace AirHandlers.DataAccess.Migrations
                     b.Property<double>("Volume")
                         .HasColumnType("REAL");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.HasIndex("AssociatedHandlerId");
 
@@ -118,12 +109,12 @@ namespace AirHandlers.DataAccess.Migrations
 
                     b.HasIndex("RecipeID");
 
-                    b.ToTable("AirHandlerRecipe");
+                    b.ToTable("AirHandlerRecipes");
                 });
 
             modelBuilder.Entity("AirHandlers.Domain.Entities.Room", b =>
                 {
-                    b.HasOne("AirHandlers.Domain.Entities.AirHandler", "AssociatedHandler")
+                    b.HasOne("AirHandlers.Domain.Entities.AirHandlerEntity", "AssociatedHandler")
                         .WithMany("ServedRooms")
                         .HasForeignKey("AssociatedHandlerId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -134,7 +125,7 @@ namespace AirHandlers.DataAccess.Migrations
 
             modelBuilder.Entity("AirHandlers.Domain.Relations.AirHandlerRecipe", b =>
                 {
-                    b.HasOne("AirHandlers.Domain.Entities.AirHandler", "AirHandler")
+                    b.HasOne("AirHandlers.Domain.Entities.AirHandlerEntity", "AirHandler")
                         .WithMany("AssociatedRecipes")
                         .HasForeignKey("AirHandlerID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -151,7 +142,7 @@ namespace AirHandlers.DataAccess.Migrations
                     b.Navigation("Recipe");
                 });
 
-            modelBuilder.Entity("AirHandlers.Domain.Entities.AirHandler", b =>
+            modelBuilder.Entity("AirHandlers.Domain.Entities.AirHandlerEntity", b =>
                 {
                     b.Navigation("AssociatedRecipes");
 

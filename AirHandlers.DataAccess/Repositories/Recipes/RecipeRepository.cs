@@ -21,6 +21,6 @@ namespace AirHandlers.Data.Repositories
           => UpdateAsync(recipe).Wait();
 
         public void DeleteRecipe(Recipe recipe)
-          => DeleteAsync(recipe.ID).Wait(); // Asumiendo que ID es la clave primaria.
+          => DeleteAsync(recipe.Id).Wait(); // Cambiado de "ID" a "Id"
     }
 }

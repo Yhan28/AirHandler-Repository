@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace AirHandlers.Data.Repositories
 {
-    public class AirHandlerRepository : RepositoryBase<AirHandler>, IAirHandlerRepository
+    public class AirHandlerRepository : RepositoryBase<AirHandlerEntity>, IAirHandlerRepository
     {
         public AirHandlerRepository(ApplicationDbContext context) : base(context) { }
 
-        public void AddAirHandler(AirHandler airHandler) => AddAsync(airHandler).Wait();
+        public void AddAirHandler(AirHandlerEntity airHandler) => AddAsync(airHandler).Wait();
 
-        public T? GetAirHandlerById<T>(Guid id) where T : AirHandler
+        public T? GetAirHandlerById<T>(Guid id) where T : AirHandlerEntity
           => GetByIdAsync(id).Result as T;
 
-        public IEnumerable<T> GetAllAirHandler<T>() where T : AirHandler
+        public IEnumerable<T> GetAllAirHandler<T>() where T : AirHandlerEntity
           => GetAllAsync().Result as IEnumerable<T>;
 
-        public void UpdateAirHandler(AirHandler airHandler)
+        public void UpdateAirHandler(AirHandlerEntity airHandler)
           => UpdateAsync(airHandler).Wait();
 
         public void DeleteAirHandler(Guid id)

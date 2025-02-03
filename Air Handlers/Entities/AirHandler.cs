@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System;
-using System.Collections.Generic;
 using Air_Handlers.Domain.Common;
 using AirHandlers.Domain.Relations;
 
 namespace AirHandlers.Domain.Entities
 {
-    public class AirHandler : Entity
+    public class AirHandlerEntity : Entity
     {
         #region Properties
-        public Guid ID { get; set; }  // Clave primaria
         public string IdentifierCode { get; set; } = string.Empty;
         public bool IsOperating { get; set; }
         public DateTime FilterChangeDate { get; set; }
@@ -33,7 +30,7 @@ namespace AirHandlers.Domain.Entities
         /// <param name="filterChangeDate"></param>
         /// <param name="referenceTemperature"></param>
         /// <param name="referenceHumidity"></param>
-        public AirHandler(string identifierCode, bool isOperating, DateTime filterChangeDate,
+        public AirHandlerEntity(string identifierCode, bool isOperating, DateTime filterChangeDate,
                           double referenceTemperature, double referenceHumidity)
         {
             IdentifierCode = identifierCode;

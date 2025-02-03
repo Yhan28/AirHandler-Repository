@@ -6,13 +6,12 @@ namespace AirHandlers.Domain.Entities
     public class Room : Entity
     {
         #region Properties
-        public Guid ID { get; set; }  // Clave primaria
         public int Number { get; set; }
         public double Volume { get; set; } // Volumen en metros cúbicos
 
         // Propiedad de navegación para establecer relación con AirHandler
         public Guid AssociatedHandlerId { get; set; }  // Clave foránea para la relación con AirHandler
-        public AirHandler AssociatedHandler { get; set; }
+        public AirHandlerEntity AssociatedHandler { get; set; }
         #endregion
 
         #region Constructor
