@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>Air_Handlers</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="NewFolder - Copy %282%29\" />
+    <Folder Include="NewFolder - Copy %283%29\" />
+    <Folder Include="NewFolder - Copy\" />
+    <Folder Include="NewFolder\" />
+  </ItemGroup>
+
+</Project>
