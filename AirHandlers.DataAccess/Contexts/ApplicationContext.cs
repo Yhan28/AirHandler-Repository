@@ -5,7 +5,7 @@ using AirHandlers.DataAccess.FluentConfigurations.Recipes;
 using AirHandlers.DataAccess.FluentConfigurations.Rooms;
 using AirHandlers.Domain.Relations;
 using Microsoft.EntityFrameworkCore.Design;
-
+using AirHandlers.DataAccess.FluentConfigurations;
 
 namespace AirHandlers.DataAccess.Contexts
 {
@@ -16,19 +16,21 @@ namespace AirHandlers.DataAccess.Contexts
         {
         }
 
-        public DbSet<AirHandler> AirHandlers { get; set; }
+        public DbSet<AirHandlerEntity> AirHandlers { get; set; }
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<Room> Rooms { get; set; }
+        public DbSet<AirHandlerRecipe> AirHandlerRecipes { get; set; } // Agregar DbSet para la tabla intermedia
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new AirHandlerTypeConfiguration());
             modelBuilder.ApplyConfiguration(new RecipeTypeConfiguration());
             modelBuilder.ApplyConfiguration(new RoomTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new AirHandlerRecipeTypeConfiguration());
 
             // Configuración de relaciones muchos a muchos entre AirHandler y Recipe
             modelBuilder.Entity<AirHandlerRecipe>()
-                .HasKey(ar => new { ar.AirHandlerID, ar.RecipeID });
+                .HasKey(ar => new { ar.AirHandlerID, ar.RecipeID }); // Clave compuesta
 
             modelBuilder.Entity<AirHandlerRecipe>()
                 .HasOne(ar => ar.AirHandler)
@@ -46,12 +48,12 @@ namespace AirHandlers.DataAccess.Contexts
                 .WithMany(a => a.ServedRooms) // Propiedad de navegación en AirHandler
                 .HasForeignKey(r => r.AssociatedHandlerId); // Clave foránea en Room
         }
-       
-    /// <summary>
-    /// Habilita características en tiempo de diseño para la base de datos del proyecto.
-    /// Ejemplo: Migraciones.
-    /// </summary>
-    public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
+
+        /// <summary>
+        /// Habilita características en tiempo de diseño para la base de datos del proyecto.
+        /// Ejemplo: Migraciones.
+        /// </summary>
+        public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
         {
             public ApplicationDbContext CreateDbContext(string[] args)
             {

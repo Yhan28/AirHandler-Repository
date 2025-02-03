@@ -21,6 +21,6 @@ namespace AirHandlers.Data.Repositories
           => UpdateAsync(room).Wait();
 
         public void DeleteRoom(Room room)
-          => DeleteAsync(room.ID).Wait(); // Asumiendo que ID es la clave primaria.
+          => DeleteAsync(room.Id).Wait(); // Cambiado de "ID" a "Id"
     }
 }

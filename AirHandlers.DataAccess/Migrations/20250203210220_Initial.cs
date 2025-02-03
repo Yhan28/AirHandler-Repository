@@ -13,59 +13,56 @@ namespace AirHandlers.DataAccess.Migrations
                 name: "AirHandlers",
                 columns: table => new
                 {
-                    ID = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     IdentifierCode = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
                     IsOperating = table.Column<bool>(type: "INTEGER", nullable: false),
                     FilterChangeDate = table.Column<DateTime>(type: "TEXT", nullable: false),
                     ReferenceTemperature = table.Column<double>(type: "REAL", nullable: false),
-                    ReferenceHumidity = table.Column<double>(type: "REAL", nullable: false),
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false)
+                    ReferenceHumidity = table.Column<double>(type: "REAL", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AirHandlers", x => x.ID);
+                    table.PrimaryKey("PK_AirHandlers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Recipes",
                 columns: table => new
                 {
-                    ID = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
                     ReferenceTemperature = table.Column<double>(type: "REAL", nullable: false),
                     ReferenceHumidity = table.Column<double>(type: "REAL", nullable: false),
                     StartDate = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    EndDate = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false)
+                    EndDate = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Recipes", x => x.ID);
+                    table.PrimaryKey("PK_Recipes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Rooms",
                 columns: table => new
                 {
-                    ID = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     Number = table.Column<int>(type: "INTEGER", nullable: false),
                     Volume = table.Column<double>(type: "REAL", nullable: false),
-                    AssociatedHandlerId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false)
+                    AssociatedHandlerId = table.Column<Guid>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Rooms", x => x.ID);
+                    table.PrimaryKey("PK_Rooms", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Rooms_AirHandlers_AssociatedHandlerId",
                         column: x => x.AssociatedHandlerId,
                         principalTable: "AirHandlers",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "AirHandlerRecipe",
+                name: "AirHandlerRecipes",
                 columns: table => new
                 {
                     AirHandlerID = table.Column<Guid>(type: "TEXT", nullable: false),
@@ -73,24 +70,24 @@ namespace AirHandlers.DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AirHandlerRecipe", x => new { x.AirHandlerID, x.RecipeID });
+                    table.PrimaryKey("PK_AirHandlerRecipes", x => new { x.AirHandlerID, x.RecipeID });
                     table.ForeignKey(
-                        name: "FK_AirHandlerRecipe_AirHandlers_AirHandlerID",
+                        name: "FK_AirHandlerRecipes_AirHandlers_AirHandlerID",
                         column: x => x.AirHandlerID,
                         principalTable: "AirHandlers",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_AirHandlerRecipe_Recipes_RecipeID",
+                        name: "FK_AirHandlerRecipes_Recipes_RecipeID",
                         column: x => x.RecipeID,
                         principalTable: "Recipes",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_AirHandlerRecipe_RecipeID",
-                table: "AirHandlerRecipe",
+                name: "IX_AirHandlerRecipes_RecipeID",
+                table: "AirHandlerRecipes",
                 column: "RecipeID");
 
             migrationBuilder.CreateIndex(
@@ -102,7 +99,7 @@ namespace AirHandlers.DataAccess.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "AirHandlerRecipe");
+                name: "AirHandlerRecipes");
 
             migrationBuilder.DropTable(
                 name: "Rooms");

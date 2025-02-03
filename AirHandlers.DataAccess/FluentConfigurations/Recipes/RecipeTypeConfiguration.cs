@@ -10,7 +10,7 @@ namespace AirHandlers.DataAccess.FluentConfigurations.Recipes
         public override void Configure(EntityTypeBuilder<Recipe> builder)
         {
             builder.ToTable("Recipes");
-            builder.HasKey(r => r.ID);
+            builder.HasKey(r => r.Id); // Cambiado de "ID" a "Id"
             builder.Property(r => r.Name).IsRequired().HasMaxLength(100);
             builder.Property(r => r.ReferenceTemperature).IsRequired();
             builder.Property(r => r.ReferenceHumidity).IsRequired();

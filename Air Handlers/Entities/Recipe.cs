@@ -8,7 +8,6 @@ namespace AirHandlers.Domain.Entities
     public class Recipe : Entity
     {
         #region Properties
-        public Guid ID { get; set; }  // Clave primaria
         public string Name { get; set; } = string.Empty;
         public double ReferenceTemperature { get; set; }
         public double ReferenceHumidity { get; set; }
