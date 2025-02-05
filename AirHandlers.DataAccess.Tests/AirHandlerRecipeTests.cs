@@ -59,7 +59,7 @@ namespace AirHandlers.DataAccess.Tests.Repositories
             );
 
             var recipe = new Recipe(
-                name: "Tarta de Manzana",
+                name: "Recipe-0X3",
                 referenceTemperature: 180.0,
                 referenceHumidity: 50.0,
                 startDate: DateTime.Now,
@@ -107,7 +107,7 @@ namespace AirHandlers.DataAccess.Tests.Repositories
             );
 
             var recipe = new Recipe(
-                name: "Galletas de Chocolate",
+                name: "Recipe-0x8",
                 referenceTemperature: 175.0,
                 referenceHumidity: 45.0,
                 startDate: DateTime.Now,
@@ -139,7 +139,7 @@ namespace AirHandlers.DataAccess.Tests.Repositories
            );
 
             var recipe = new Recipe(
-                name: "Brownie de Chocolate",
+                name: "Recipe-07X3",
                 referenceTemperature: 180.0,
                 referenceHumidity: 55.0,
                 startDate: DateTime.Now,

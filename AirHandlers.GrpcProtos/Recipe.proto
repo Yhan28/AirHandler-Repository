@@ -1,0 +1,12 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "AirHandlers.GrpcProtos";
+
+message RecipeProto {
+    string id = 1; // GUID como string
+    string name = 2;
+    double reference_temperature = 3;
+    double reference_humidity = 4;
+    string start_date = 5; // ISO 8601 string
+    string end_date = 6; // ISO 8601 string
+}

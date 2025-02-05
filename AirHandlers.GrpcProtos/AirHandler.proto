@@ -1,0 +1,18 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "AirHandlers.GrpcProtos";
+
+import "Room.proto"; // Importar RoomProto
+import "Recipe.proto"; // Importar RecipeProto
+
+message AirHandlerProto {
+    string id = 1; // GUID como string
+    string identifier_code = 2;
+    bool is_operating = 3;
+    string filter_change_date = 4; // ISO 8601 string
+    double reference_temperature = 5;
+    double reference_humidity = 6;
+
+    repeated RoomProto served_rooms = 7; // Relación one-to-many con Room
+    repeated RecipeProto associated_recipes = 8; // Relación many-to-many con Recipe
+}

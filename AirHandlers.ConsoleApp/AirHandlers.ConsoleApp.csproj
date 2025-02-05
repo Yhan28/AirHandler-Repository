@@ -1,27 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-
-    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.36" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.10" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
-    <PackageReference Include="MSTest.TestAdapter" Version="2.2.10" />
-    <PackageReference Include="MSTest.TestFramework" Version="2.2.10" />
-    <PackageReference Include="NUnit" Version="3.13.2" />
-    <PackageReference Include="NUnit3TestAdapter" Version="4.0.0" />
-    <PackageReference Include="coverlet.collector" Version="3.1.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Air Handlers\AirHandlers.Domain.csproj" />
+    <ProjectReference Include="..\AirHandlers.Application\AirHandlers.Application.csproj" />
     <ProjectReference Include="..\AirHandlers.Contracts\AirHandlers.Contracts.csproj" />
     <ProjectReference Include="..\AirHandlers.DataAccess\AirHandlers.DataAccess.csproj" />
+    <ProjectReference Include="..\AirHandlers.GrpcProtos\AirHandlers.GrpcProtos.csproj" />
+    <ProjectReference Include="..\AirHandlers.Services\AirHandlers.Services.csproj" />
   </ItemGroup>
 
 </Project>

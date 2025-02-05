@@ -6,6 +6,12 @@ namespace AirHandlers.Contracts.Recipes
     public interface IRoomRepository
     {
         /// <summary>
+        /// Crea una nueva Room en la base de datos.
+        /// </summary>
+        /// <param name="room">The Recipe object to be created.</param>
+        void AddRoom(Room room);
+
+        /// <summary>
         /// Crea una nueva Room en la base de datos
         /// </summary>
         /// <param name="room">The Room object to be created.</param>

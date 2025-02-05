@@ -43,7 +43,7 @@ namespace AirHandlers.DataAccess.Tests.Repositories
         {
             // Arrange
             var recipe = new Recipe(
-                name: "Tarta de Manzana",
+                name: "Recipe-XX4-07x9",
                 referenceTemperature: 180.0,
                 referenceHumidity: 50.0,
                 startDate: DateTime.Now,
@@ -73,7 +73,7 @@ namespace AirHandlers.DataAccess.Tests.Repositories
         {
             // Arrange
             var recipe1 = new Recipe(
-                name: "Galletas de Chocolate",
+                name: "Recipe-XX4-0089",
                 referenceTemperature: 175.0,
                 referenceHumidity: 45.0,
                 startDate: DateTime.Now,
@@ -81,7 +81,7 @@ namespace AirHandlers.DataAccess.Tests.Repositories
             );
 
             var recipe2 = new Recipe(
-                name: "Ensalada César",
+                name: "Recipe-XX4",
                 referenceTemperature: 5.0,
                 referenceHumidity: 60.0,
                 startDate: DateTime.Now,
@@ -103,7 +103,7 @@ namespace AirHandlers.DataAccess.Tests.Repositories
         {
             // Arrange
             var recipe = new Recipe(
-                name: "Sopa de Tomate",
+                name: "Recipe-78X",
                 referenceTemperature: 90.0,
                 referenceHumidity: 70.0,
                 startDate: DateTime.Now,
@@ -112,14 +112,14 @@ namespace AirHandlers.DataAccess.Tests.Repositories
 
             _repository.AddRecipe(recipe);
 
-            recipe.Name = "Sopa de Tomate con Albahaca";
+            recipe.Name = "Recipe-6X1";
 
             // Act
             _repository.UpdateRecipe(recipe);
 
             // Assert
             var updatedRecipe = _repository.GetRecipeById<Recipe>(recipe.Id);
-            Assert.AreEqual("Sopa de Tomate con Albahaca", updatedRecipe.Name);
+            Assert.AreEqual("Recipe-6X1", updatedRecipe.Name);
         }
 
         [TestMethod]
@@ -127,7 +127,7 @@ namespace AirHandlers.DataAccess.Tests.Repositories
         {
             // Arrange
             var recipe = new Recipe(
-                name: "Brownie de Chocolate",
+                name: "Recipe-67X41",
                 referenceTemperature: 180.0,
                 referenceHumidity: 55.0,
                 startDate: DateTime.Now,

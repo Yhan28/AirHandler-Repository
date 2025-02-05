@@ -1,0 +1,10 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "AirHandlers.GrpcProtos";
+
+message RoomProto {
+    string id = 1; // GUID como string
+    int32 number = 2;
+    double volume = 3;
+    string associated_handler_id = 4; // GUID como string para la relación con AirHandler
+}

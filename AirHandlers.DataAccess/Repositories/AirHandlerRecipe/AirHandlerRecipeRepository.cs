@@ -14,7 +14,7 @@ namespace AirHandlers.Data.Repositories
 
         public AirHandlerRecipeRepository(ApplicationDbContext context)
         {
-            _context = context;
+            _context = context;AirHandlerRecipe airHandlerRecipe;
         }
 
         public async Task AddAsync(AirHandlerRecipe airHandlerRecipe)

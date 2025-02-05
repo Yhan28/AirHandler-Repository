@@ -9,6 +9,7 @@ namespace AirHandlers.Data.Repositories
     {
         public RoomRepository(ApplicationDbContext context) : base(context) { }
 
+        public void AddRoom(Room room) => AddAsync(room).Wait();
         public void CreateRoom(Room room) => AddAsync(room).Wait();
 
         public T? GetRoomById<T>(Guid id) where T : Room

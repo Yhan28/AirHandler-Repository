@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+	
+	<ItemGroup>
+		<Protobuf Include="*.proto" GrpcServices="Both" />
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <Compile Remove="Protos\**" />
+	  <EmbeddedResource Remove="Protos\**" />
+	  <None Remove="Protos\**" />
+	  <Protobuf Remove="Protos\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Remove="AirHandler.proto" />
+		<None Remove="Recipe.proto" />
+		<None Remove="Room.proto" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Google.Protobuf" Version="3.27.2" />
+		<PackageReference Include="Grpc.AspNetCore" Version="2.67.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.10" />
+	</ItemGroup>
+	
+  <ItemGroup>
+    <ProjectReference Include="..\Air Handlers\AirHandlers.Domain.csproj" />
+    <ProjectReference Include="..\AirHandlers.Contracts\AirHandlers.Contracts.csproj" />
+    <ProjectReference Include="..\AirHandlers.DataAccess\AirHandlers.DataAccess.csproj" />
+
+  </ItemGroup>
+
+</Project>
